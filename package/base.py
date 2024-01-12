@@ -1,18 +1,25 @@
 import os
+import mysql.connector
 from dotenv import load_dotenv
-from supabase import create_client, Client
 
-load_dotenv(dotenv_path=".env")
+load_dotenv(".env")
 
-url: str = os.getenv("SUPABASE_URL")
-key: str = os.getenv("SUPABASE_KEY")
+
+config = {
+  'user': os.getenv('USER_MYSQL'),
+  'password': os.getenv('PASSWORD_MYSQL'),
+  'host': os.getenv('HOST'),
+  'raise_on_warnings': True
+}
 
 
 try:
-    supabase: Client = create_client(url, key)
+    con = mysql.connector.connect(**config)
     print("Connected")
 except Exception as e:
-    print(f"Error: {e}")
+    print(f"{e}")
+
+con.close()
 
 
 
@@ -34,40 +41,4 @@ query =
     
 
 data = supabase.raw(query).execute()
-"""
-
-
-
-
-"""
-
-import psycopg2
-
-# Conectarse a la base de datos de PostgreSQL
-conn = psycopg2.connect(
-    dbname="tu_dbname",
-    user="tu_usuario",
-    password="tu_contraseña",
-    host="tu_host_de_supabase"
-)
-
-# Crear un cursor
-cur = conn.cursor()
-
-# Ejecutar una consulta SQL
-cur.execute("
-    CREATE TABLE mi_tabla (
-        id SERIAL PRIMARY KEY,
-        columna1 VARCHAR(255),
-        columna2 INT
-    );
-")
-
-# Confirmar la transacción
-conn.commit()
-
-# Cerrar el cursor y la conexión
-cur.close()
-conn.close()
-
 """
