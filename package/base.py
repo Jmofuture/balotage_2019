@@ -2,7 +2,7 @@ import os
 from dotenv import load_dotenv
 from supabase import create_client, Client
 
-load_dotenv(dotenv_path=".env.txt")
+load_dotenv(dotenv_path=".env")
 
 url: str = os.getenv("SUPABASE_URL")
 key: str = os.getenv("SUPABASE_KEY")
@@ -16,8 +16,8 @@ except Exception as e:
 
 
 
-
-query = """
+"""
+query = 
     IF NOT EXIST CREATE TABLE balotage (
     Fecha_carga date,
     Departamento_ISO VARCHAR(2),
@@ -31,10 +31,10 @@ query = """
     Total_Martinez_Villar smallint,
     Total_Lacalle Pou_Argimon int
     );
-    """
+    
 
 data = supabase.raw(query).execute()
-
+"""
 
 
 
