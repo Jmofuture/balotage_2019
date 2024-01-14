@@ -14,3 +14,5 @@ table_query = b.query_create_table(c.TYPE_MAPPING,df_balotage, c.DB_NAME)
 b.create_table(con, table_query,c.DB_NAME)
 
 
+b.insert_data(con, df_balotage, c.DB_NAME)
+
