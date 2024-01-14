@@ -37,3 +37,6 @@ Las contribuciones al proyecto son bienvenidas.
 ## Autor
 - Jean Olmedillo
 
+
+![Dashboard 1](https://github.com/Jmofuture/balotage_2019/assets/78714438/b99fdee8-4e9b-460f-a163-e13f45afaf80)
+
