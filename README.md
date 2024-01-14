@@ -34,6 +34,6 @@ Para ejecutar el proceso de ETL, sigue estos pasos:
 Las contribuciones al proyecto son bienvenidas. 
 
 
-## Autore
-- [Jean Olmedillo] - Autor principal
+## Autor
+- Jean Olmedillo - Autor principal
 
