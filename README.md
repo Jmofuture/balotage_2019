@@ -37,6 +37,8 @@ Las contribuciones al proyecto son bienvenidas.
 ## Autor
 - Jean Olmedillo
 
+- [Tableau]https://public.tableau.com/app/profile/jeanolmedillo/viz/Balotage2019/Dashboard1
+
 
 ![Dashboard 1](https://github.com/Jmofuture/balotage_2019/assets/78714438/b99fdee8-4e9b-460f-a163-e13f45afaf80)
 
