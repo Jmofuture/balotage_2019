@@ -14,4 +14,9 @@ def import_balotage(url_balotage, departments, date, columns):
     return df_balotage
 
 
-
+def create_csv(dataframe, filename="output.csv"):
+    try:
+        dataframe.to_csv(filename, sep=",")
+        print("Archivo Creado")
+    except Exception as e:
+        print(e)

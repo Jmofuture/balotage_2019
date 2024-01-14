@@ -35,5 +35,5 @@ Las contribuciones al proyecto son bienvenidas.
 
 
 ## Autor
-- Jean Olmedillo - Autor principal
+- Jean Olmedillo
 
