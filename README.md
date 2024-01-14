@@ -11,8 +11,9 @@ Este proyecto implementa un proceso de ETL (Extracción, Transformación y Carga
 
 ## Flujo del Proceso ETL
 1. **Extracción (E)**: Los datos son extraídos de una fuente online especificada en `constants.py`.
-2. **Transformación (T)**: Se aplican transformaciones a los datos.
-3. **Carga (L)**: Los datos transformados son cargados en una base de datos MySQL.
+   [Fuente: Catálogo de Datos Abiertos - Balotaje 2019](https://catalogodatos.gub.uy/dataset/corte-electoral-balotaje_2019/resource/a71df2ea-b075-40e7-80b5-1df4c781bb99)
+3. **Transformación (T)**: Se aplican transformaciones a los datos.
+4. **Carga (L)**: Los datos transformados son cargados en una base de datos MySQL.
 
 ## Uso del Archivo .env
 El archivo `.env` es necesario para almacenar las credenciales de la base de datos de forma segura. Este archivo debe estar en la raíz del proyecto y no se debe incluir en el control de versiones.
