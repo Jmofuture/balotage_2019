@@ -1,44 +1,46 @@
-import os
 import mysql.connector
-from dotenv import load_dotenv
 
-load_dotenv(".env")
-
-
-config = {
-  'user': os.getenv('USER_MYSQL'),
-  'password': os.getenv('PASSWORD_MYSQL'),
-  'host': os.getenv('HOST'),
-  'raise_on_warnings': True
-}
+def connection_db(config):
+    try:
+        con = mysql.connector.connect(**config)
+        print("Connected")
+    except Exception as e:
+        print(f"{e}")
+    return con
 
 
-try:
-    con = mysql.connector.connect(**config)
-    print("Connected")
-except Exception as e:
-    print(f"{e}")
+def create_database(con, db_name):
+    try:
+        cursor = con.cursor()
+        cursor.execute(f"SHOW DATABASES LIKE '{db_name}'")
+        result = cursor.fetchone()
+        if not result:
+            cursor.execute(f"CREATE DATABASE {db_name}")
+            print(f"Base de datos '{db_name}' creada.")
+        else:
+            print(f"La base de datos '{db_name}' ya existe.")
+    except mysql.connector.Error as e:
+        print(f"Failed creating database: {e}")
+        exit(1)
 
-con.close()
+def query_create_table(db_types,dataframe, table_name):
+    columns = dataframe.columns
+    column_types = dataframe.dtypes
+    sql_columns = []
 
+    for column, dtype in zip(columns, column_types):
+        sql_dtype = db_types.get(str(dtype), 'VARCHAR(255)')
+        sql_columns.append(f"{column} {sql_dtype}")
 
+    column_str = ',\n    '.join(sql_columns)
+    sql_query = f"CREATE TABLE IF NOT EXISTS {table_name} (\n    {column_str}\n);"
+    print(sql_query)
+    return sql_query
 
-"""
-query = 
-    IF NOT EXIST CREATE TABLE balotage (
-    Fecha_carga date,
-    Departamento_ISO VARCHAR(2),
-    Departamento VARCHAR(20),
-    Total_Habilitados smallint,
-    Total_Votos_Emitidos smallint,
-    Total_Votos_NO_Observados smallint,
-    Total_Votos_Observados smallint,
-    Total_Anulados smallint,
-    Total_EN_Blanco smallint,
-    Total_Martinez_Villar smallint,
-    Total_Lacalle Pou_Argimon int
-    );
-    
+def create_table(con, query, database):
+    cursor = con.cursor()
+    cursor.execute(f"USE {database}")
+    cursor.execute(query)
+    con.commit()
+    print("Tabla creada")
 
-data = supabase.raw(query).execute()
-"""
